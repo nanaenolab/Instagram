@@ -86,9 +86,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KOK-mF-yKh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KOK-mF-yKh">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="486" id="Qyn-MR-yM5" customClass="PostCell" customModule="Instagram" customModuleProvider="target">
@@ -100,6 +99,10 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NNE-dt-mOA">
                                                     <rect key="frame" x="8" y="8" width="398" height="441"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="441" id="DL7-bX-4pa"/>
+                                                        <constraint firstAttribute="width" constant="398" id="bY2-nv-Dfz"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nanae" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alr-cf-Ofn">
                                                     <rect key="frame" x="8" y="457" width="49" height="20.5"/>
@@ -122,12 +125,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="b5c-Ob-AqQ" secondAttribute="trailing" constant="8" id="Bqd-2f-EwA"/>
                                                 <constraint firstItem="b5c-Ob-AqQ" firstAttribute="baseline" secondItem="Alr-cf-Ofn" secondAttribute="firstBaseline" id="D3k-dV-n1k"/>
                                                 <constraint firstItem="NNE-dt-mOA" firstAttribute="top" secondItem="kCx-mA-pLm" secondAttribute="top" constant="8" id="KeY-L7-27I"/>
-                                                <constraint firstItem="NNE-dt-mOA" firstAttribute="top" secondItem="kCx-mA-pLm" secondAttribute="top" constant="8" id="L5o-oS-ie9"/>
                                                 <constraint firstItem="Alr-cf-Ofn" firstAttribute="top" secondItem="NNE-dt-mOA" secondAttribute="bottom" constant="8" id="ZF4-zo-eQL"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="b5c-Ob-AqQ" secondAttribute="bottom" constant="-2.5" id="bA7-sW-UQU"/>
                                                 <constraint firstItem="NNE-dt-mOA" firstAttribute="leading" secondItem="kCx-mA-pLm" secondAttribute="leading" constant="8" id="dhP-JO-UBs"/>
                                                 <constraint firstAttribute="trailing" secondItem="NNE-dt-mOA" secondAttribute="trailing" constant="8" id="gYg-YM-lI8"/>
-                                                <constraint firstAttribute="trailing" secondItem="NNE-dt-mOA" secondAttribute="trailing" constant="8" id="k7M-wU-BfO"/>
                                                 <constraint firstItem="Alr-cf-Ofn" firstAttribute="top" secondItem="NNE-dt-mOA" secondAttribute="bottom" constant="8" id="rXv-Zx-uj1"/>
                                                 <constraint firstItem="Alr-cf-Ofn" firstAttribute="leading" secondItem="kCx-mA-pLm" secondAttribute="leading" constant="8" id="tCz-5k-5I6"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="b5c-Ob-AqQ" secondAttribute="bottom" constant="8" id="yqK-fs-IH3"/>
@@ -144,11 +145,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tCG-8i-AfI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KOK-mF-yKh" firstAttribute="trailing" secondItem="tCG-8i-AfI" secondAttribute="trailing" id="00u-QE-fa7"/>
+                            <constraint firstItem="KOK-mF-yKh" firstAttribute="leading" secondItem="tCG-8i-AfI" secondAttribute="leading" id="JPF-U8-ZF4"/>
+                            <constraint firstAttribute="bottom" secondItem="KOK-mF-yKh" secondAttribute="bottom" id="KUh-yU-BUJ"/>
+                            <constraint firstItem="KOK-mF-yKh" firstAttribute="top" secondItem="e5S-NX-HNE" secondAttribute="top" id="wQy-Cm-BNB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PJm-lc-Sbu">
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="gaP-xJ-sFW">
                             <connections>
-                                <segue destination="amE-0r-Y6c" kind="presentation" id="sO8-4V-7tM"/>
+                                <segue destination="amE-0r-Y6c" kind="presentation" modalPresentationStyle="fullScreen" id="sO8-4V-7tM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -164,19 +171,23 @@
         <scene sceneID="C5h-jV-NED">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="amE-0r-Y6c" customClass="CamaraViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WrO-Cy-IZd">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="WrO-Cy-IZd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ifw-CW-OtG">
-                                <rect key="frame" x="20" y="64" width="374" height="375"/>
+                                <rect key="frame" x="20" y="64" width="375" height="375"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="A8D-FA-Slo"/>
+                                    <constraint firstAttribute="height" constant="375" id="ljh-Y5-1YS"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="JFE-nt-6wV" appends="YES" id="evP-wc-wHl"/>
                                 </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YiM-6t-ibY">
-                                <rect key="frame" x="20" y="447" width="374" height="34"/>
+                                <rect key="frame" x="20" y="447" width="375" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
