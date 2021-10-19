@@ -47,14 +47,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override var canBecomeFirstResponder: Bool {
-        return true
+        return showsCommentBar
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         let query = PFQuery(className: "Posts")
-        query.includeKeys(["author","Comments","Comments.author", "Comments.text"])
+        query.includeKeys(["author","comments","comments.author"])
         query.limit = 20
         
         query.findObjectsInBackground{(posts, error) in
@@ -72,7 +72,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         comment["post"] = selectedPost
         comment["author"] = PFUser.current()!
 
-        selectedPost.add(comment, forKey: "Comments")
+        selectedPost.add(comment, forKey: "comments")
 
         selectedPost.saveInBackground {(success, error) in
             if success {
@@ -93,7 +93,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let post = posts[section]
-        let comments = (post["Comments"] as? [PFObject]) ?? []
+        let comments = (post["comments"] as? [PFObject]) ?? []
         
         return comments.count + 2
     }
@@ -104,7 +104,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.section]
-        let comments = (post["Comments"] as? [PFObject]) ?? []
+        let comments = (post["comments"] as? [PFObject]) ?? []
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
